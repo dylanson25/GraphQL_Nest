@@ -2,7 +2,7 @@
 
 ## Goal
 
-This is my rout to learn GraphQL following Fernando Herrera course
+This is my rout to learn GraphQL following Fernando Herrera course, the official documentation and youtube videos
 
 ## 01-Nest_TODO
 
