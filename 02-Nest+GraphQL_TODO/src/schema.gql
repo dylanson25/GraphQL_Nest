@@ -17,7 +17,10 @@ type Query {
 
   """This query return a random number between 0 to 9"""
   randomNumberZeroTo(to: Int): Int!
-  todos: [Todo!]!
+  todos(
+    """Status of returned TODOs"""
+    status: Boolean
+  ): [Todo!]!
   todo(id: Int!): Todo!
 }
 
