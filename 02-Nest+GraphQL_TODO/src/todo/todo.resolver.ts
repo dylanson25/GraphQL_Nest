@@ -4,6 +4,7 @@ import { Todo } from './entities/todo.entity';
 import { TodoService } from './todo.service';
 import { UpdateTodoInput } from './dto/inputs/update-todo.input';
 import { StatusArgs } from './dto/args/status.args';
+import { AggreationsType } from './types/aggregations.type';
 
 @Resolver(() => Todo)
 export class TodoResolver {
@@ -31,5 +32,27 @@ export class TodoResolver {
   @Mutation(() => Boolean)
   removeTodo(@Args('id', { type: () => Int }) id: number) {
     return this.todoService.remove(id);
+  }
+
+  @Query(() => Int, { name: 'totalTodos' })
+  totalTodos() {
+    return this.todoService.totalTodos;
+  }
+  @Query(() => Int, { name: 'completedTodos' })
+  completedTodos() {
+    return this.todoService.completedTodos;
+  }
+  @Query(() => Int, { name: 'pendingTodos' })
+  pendingTodos() {
+    return this.todoService.pendingTodos;
+  }
+
+  @Query(() => AggreationsType)
+  aggregations(): AggreationsType {
+    return {
+      total: this.todoService.totalTodos,
+      pending: this.todoService.completedTodos,
+      completed: this.todoService.pendingTodos,
+    };
   }
 }

@@ -10,6 +10,17 @@ export class TodoService {
     { id: 2, description: '  Task 2', done: false },
     { id: 3, description: '  Task 3', done: false },
   ];
+
+  get totalTodos() {
+    return this.todos.length;
+  }
+  get completedTodos() {
+    return this.todos.filter((todo) => todo.done === true).length;
+  }
+  get pendingTodos() {
+    return this.todos.filter((todo) => todo.done === false).length;
+  }
+
   findAll({ status }: StatusArgs) {
     if (status === undefined) return this.todos;
     return this.todos.filter((todo) => todo.done === status);
