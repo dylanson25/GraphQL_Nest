@@ -13,8 +13,8 @@ import { UpdateFakeStoreDto } from './dto/update-fake-store.dto';
 import { FakeStore } from './entities/fake-store.entity';
 import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
 
-@ApiTags('fake-store/products')
-@Controller('fake-store/products')
+@ApiTags('https://fake-store-fwxl.onrender.com/products')
+@Controller('products')
 export class FakeStoreController {
   constructor(private readonly fakeStoreService: FakeStoreService) {}
 
