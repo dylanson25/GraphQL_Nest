@@ -10,13 +10,14 @@ import {
 import { FakeStoreService } from './fake-store.service';
 import { CreateFakeStoreDto } from './dto/create-fake-store.dto';
 import { UpdateFakeStoreDto } from './dto/update-fake-store.dto';
+import { FakeStore } from './entities/fake-store.entity';
 
 @Controller('fake-store/products')
 export class FakeStoreController {
   constructor(private readonly fakeStoreService: FakeStoreService) {}
 
   @Post()
-  create(@Body() createFakeStoreDto: CreateFakeStoreDto) {
+  create(@Body() createFakeStoreDto: CreateFakeStoreDto): FakeStore {
     return this.fakeStoreService.create(createFakeStoreDto);
   }
 
